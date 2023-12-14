@@ -3,6 +3,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 const firebaseConfig = {
@@ -24,22 +25,32 @@ let logInBtn = document.getElementById("login")
 
 
 
-logInBtn && logInBtn.addEventListener("click",()=>{
-  signInWithEmailAndPassword(auth, email.value, password.value)
+
+
+
+  
+  
+  
+  logInBtn && logInBtn.addEventListener("click",()=>{
+    signInWithEmailAndPassword(auth, email.value, password.value)
     .then((userCredential) => {
-  
+      
       const user = userCredential.user;
+      
+
       location.href = "profile.html"
-      console.log(user)
-  
+      
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      console.log(errorMessage)
     });
+    
+  })
 
-})
 
-
-
-export { createUserWithEmailAndPassword, auth };
+  
+  
+  export { createUserWithEmailAndPassword, auth ,onAuthStateChanged};
+  

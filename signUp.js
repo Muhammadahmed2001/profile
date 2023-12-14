@@ -4,7 +4,7 @@ let userName = document.getElementById("userName");
 let email = document.getElementById("email");
 let password = document.getElementById("password");
 let registerBtn = document.getElementById("register-btn");
-let profilName = document.getElementById("profilName")
+
 
 
 let registertion = () => {
@@ -23,5 +23,5 @@ let registertion = () => {
     // ..
   });
 };
-registerBtn.addEventListener("click", registertion);
+registerBtn && registerBtn.addEventListener("click", registertion);
 
