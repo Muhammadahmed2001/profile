@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="profile.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="profile.css" />
+    <link rel="stylesheet" href="loader.css" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-    <div class="card">
+  <body>
+    <div id="loader" class="loader"></div>
+
+    <div id="main" class="main">
+      <div class="card">
         <h1>PROFILE</h1>
         <div class="text">
-            <img src="https://www.shareicon.net/data/512x512/2017/07/13/888372_man_512x512.png" alt="">
-            <h3 id="updateName"></h3>
-            <p id="updateEmail"></p>
+          <img
+            src="./assits/888372_man_512x512.png"
+            alt=""
+          />
+          <h3 id="updateName"></h3>
+          <p id="updateEmail"></p>
         </div>
-        <div class="links">
-
-        </div>
+        <div class="links"></div>
+        <button id="logout" class="logout">LogOut</button>
+      </div>
     </div>
 
-
-
     <script type="module" src="profile.js"></script>
-</body>
-
+  </body>
 </html>

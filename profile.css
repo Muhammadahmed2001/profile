@@ -5,13 +5,14 @@
     padding: 0;
 }
 
-body {
+.main {
     font-family: 'Poppins', sans-serif;
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    display: none;
 }
 
 .card {
@@ -129,4 +130,20 @@ body {
             rgba(42, 60, 87, 0.4) 100%),
         linear-gradient(135deg, #670d10 0%, #092756 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3E1D6D', endColorstr='#092756', GradientType=1);
+}
+.logout{
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 14px 24px;
+    border: none;
+    transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+    background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%);
+    color: #fff;
+    margin-top: 10px;
+
 }

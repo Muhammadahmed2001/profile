@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
+  signOut,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 const firebaseConfig = {
@@ -18,39 +19,26 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+let email = document.getElementById("email");
+let password = document.getElementById("password");
+let logInBtn = document.getElementById("login");
+let loader = document.getElementById("loader")
+let main = document.getElementById("main")
 
-let email = document.getElementById("email")
-let password = document.getElementById("password")
-let logInBtn = document.getElementById("login")
-
-
-
-
-
-
-  
-  
-  
-  logInBtn && logInBtn.addEventListener("click",()=>{
+logInBtn &&
+  logInBtn.addEventListener("click", () => {
     signInWithEmailAndPassword(auth, email.value, password.value)
-    .then((userCredential) => {
-      
-      const user = userCredential.user;
-      
+      .then((userCredential) => {
+        // main.style.display = "flex"
+        loader.style.display = "block"
+        const user = userCredential.user;
+        // location.href = "profile.html";
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
+  });
 
-      location.href = "profile.html"
-      
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorMessage)
-    });
-    
-  })
-
-
-  
-  
-  export { createUserWithEmailAndPassword, auth ,onAuthStateChanged};
-  
+export { createUserWithEmailAndPassword, auth, onAuthStateChanged,signOut };
