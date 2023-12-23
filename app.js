@@ -1,4 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore,  doc, setDoc  } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -18,6 +19,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 let email = document.getElementById("email");
 let password = document.getElementById("password");
@@ -41,4 +43,4 @@ logInBtn &&
       });
   });
 
-export { createUserWithEmailAndPassword, auth, onAuthStateChanged,signOut };
+export { createUserWithEmailAndPassword, auth, onAuthStateChanged,signOut ,  doc, setDoc,db };
