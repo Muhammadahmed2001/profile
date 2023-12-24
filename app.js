@@ -1,5 +1,10 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore,  doc, setDoc  } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc,
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -24,15 +29,15 @@ const db = getFirestore(app);
 let email = document.getElementById("email");
 let password = document.getElementById("password");
 let logInBtn = document.getElementById("login");
-let loader = document.getElementById("loader")
-let main = document.getElementById("main")
+let loader = document.getElementById("loader");
+let main = document.getElementById("main");
 
 logInBtn &&
   logInBtn.addEventListener("click", () => {
     signInWithEmailAndPassword(auth, email.value, password.value)
       .then((userCredential) => {
         // main.style.display = "flex"
-        loader.style.display = "block"
+        // loader.style.display = "block";
         const user = userCredential.user;
         // location.href = "profile.html";
       })
@@ -43,4 +48,13 @@ logInBtn &&
       });
   });
 
-export { createUserWithEmailAndPassword, auth, onAuthStateChanged,signOut ,  doc, setDoc,db };
+export {
+  createUserWithEmailAndPassword,
+  auth,
+  onAuthStateChanged,
+  signOut,
+  doc,
+  setDoc,
+  db,
+  getDoc,
+};

@@ -9,24 +9,30 @@ let registerBtn = document.getElementById("register-btn");
 let registertion = () => {
 
   console.log()
-  createUserWithEmailAndPassword(auth, email.value, password.value)
+  if(userName.value.trim() !== "" ){
+
+    createUserWithEmailAndPassword(auth, email.value, password.value)
     .then((userCredential) => {
-      // profileUserName.innerHTML = userName.value
-      // Signed up
-      const user = userCredential.user;
-      setDoc(doc(db, "User Nmae", user.uid), {
-        name: userName.value,
-     
-      });
-      // location.href = "index.html"
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorMessage);
-      // ..
+    // profileUserName.innerHTML = userName.value
+    // Signed up
+    
+    const user = userCredential.user;
+    setDoc(doc(db, "User Name", user.uid), {
+      name: userName.value,
     });
+    
+    
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorMessage);
+    // ..
+  });
+}else{
+  alert("Plz Enter Your User Name")
+}
 };
 registerBtn && registerBtn.addEventListener("click", registertion);
 
