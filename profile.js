@@ -5,14 +5,14 @@ let updateEmail = document.getElementById("updateEmail");
 let logOutBtn = document.getElementById("logout")
 let loader = document.getElementById("loader")
 let main = document.getElementById("main")
+let file = document.getElementById("file")
 
 
-
-onAuthStateChanged(auth, async (user) => {
-    
-    
-    
-    
+file.addEventListener("change",()=>{
+  let profileImg = document.getElementById("profile-img")
+  profileImg.src = URL.createObjectURL(event.target.files[0])
+})
+onAuthStateChanged(auth, async (user) => { 
     if (user) {
       const docRef = doc(db, "User Name", user.uid);
       const docSnap = await getDoc(docRef);
