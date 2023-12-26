@@ -8,13 +8,13 @@ let main = document.getElementById("main")
 let file = document.getElementById("file")
 
 
-file.addEventListener("change",()=>{
-  let profileImg = document.getElementById("profile-img")
-  profileImg.src = URL.createObjectURL(event.target.files[0])
-})
+
+
+
+
 onAuthStateChanged(auth, async (user) => { 
-    if (user) {
-      const docRef = doc(db, "User Name", user.uid);
+  if (user) {
+    const docRef = doc(db, "User Name", user.uid);
       const docSnap = await getDoc(docRef);
       console.log("Document data:", docSnap.data());
     // console.log(updateName.innerHTML)
@@ -27,7 +27,7 @@ onAuthStateChanged(auth, async (user) => {
     updateEmail.innerHTML = user.email
     
    
- 
+    
     const uid = user.uid;
     // ...
   } else {
@@ -38,6 +38,19 @@ onAuthStateChanged(auth, async (user) => {
     // ...
   }
 });
+
+
+file && file.addEventListener("change",()=>{
+  let profileImg = document.getElementById("profile-img")
+  profileImg.src = URL.createObjectURL(event.target.files[0])
+})
+
+const uploadTostorage = (file)=>{
+  return new Promise((resolve,reject)=>{
+    const fileName = file.files[0]
+  const storageRef = ref(storage, 'images/' + file.name);
+})
+}
 
 let logout = ()=>{
   signOut(auth).then(() => {
