@@ -178,3 +178,29 @@ body {
   color: #fff;
   margin-top: 10px;
 }
+.picture-update {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 14px 24px;
+  border: none;
+  transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s,
+    -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+  background: linear-gradient(
+    to right,
+    rgb(37, 172, 82) 0%,
+    rgb(23, 147, 179) 50%,
+    rgb(87, 5, 155) 100%
+  );
+  color: #fff;
+  margin-top: 10px;
+}
+
+
+
+
+

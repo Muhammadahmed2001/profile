@@ -59,4 +59,6 @@ export {
   setDoc,
   db,
   getDoc,
+  storage,
+  ref,uploadBytesResumable, getDownloadURL,
 };
