@@ -5,7 +5,8 @@ let updateEmail = document.getElementById("updateEmail");
 let logOutBtn = document.getElementById("logout")
 let loader = document.getElementById("loader")
 let main = document.getElementById("main")
-let uploadProfileBtn = document.getElementById("picture-update")
+let uploadProfileBtn = document.getElementById("picture-update-btn")
+let profileImg = document.getElementById("profile-img")
 
 
 
@@ -40,41 +41,63 @@ onAuthStateChanged(auth, async (user) => {
   }
 });
 
-
 let uploadToStorage = (file)=>{
-  console.log()
   return new Promise((resolve,reject)=>{
-  let fileName = file.files[0].name
-  const storageRef = ref(storage, `user/216sffsd2fs68${fileName.slice(fileName.lastIndexOf("."))}`);
-  const uploadTask = uploadBytesResumable(storageRef, file);
-  uploadTask.on('state_changed', 
-  (snapshot) => {
-    // Observe state change events such as progress, pause, and resume
-    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    console.log('Upload is ' + progress + '% done');
-    switch (snapshot.state) {
-      case 'paused':
-        console.log('Upload is paused');
-        break;
-        case 'running':
-          console.log('Upload is running');
-        break;
-      }
-    }, 
-  (error) => {
-    reject(error)
-  }, 
-  () => {
-    // Handle successful uploads on complete
-    
-    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-      resolve('File available at', downloadURL);
-    });
-  }
-  );
-})
+    const storageRef = ref(storage, 'images/rivers.jpg');
+  })
 }
+
+
+
+
+let uploadFile = ()=>{
+  const file = document.getElementById("file")
+  const fileName = file.files[0].name
+  console.log(fileName.slice(file.files[0].name.lastIndexOf(".")))
+}
+const file = document.getElementById("file")
+
+file.addEventListener("change",()=>{
+  profileImg.src = URL.createObjectURL(event.target.files[0])
+  console.log()
+})
+
+
+uploadProfileBtn && uploadProfileBtn.addEventListener("click",uploadFile)
+// let uploadToStorage = (file)=>{
+//   console.log()
+//   return new Promise((resolve,reject)=>{
+//   let fileName = file.files[0].name
+//   const storageRef = ref(storage, `user/216sffsd2fs68${fileName.slice(fileName.lastIndexOf("."))}`);
+//   const uploadTask = uploadBytesResumable(storageRef, file);
+//   uploadTask.on('state_changed', 
+//   (snapshot) => {
+//     // Observe state change events such as progress, pause, and resume
+//     // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+//     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+//     console.log('Upload is ' + progress + '% done');
+//     switch (snapshot.state) {
+//       case 'paused':
+//         console.log('Upload is paused');
+//         break;
+//         case 'running':
+//           console.log('Upload is running');
+//         break;
+//       }
+//     }, 
+//   (error) => {
+//     reject(error)
+//   }, 
+//   () => {
+//     // Handle successful uploads on complete
+    
+//     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+//       resolve('File available at', downloadURL);
+//     });
+//   }
+//   );
+// })
+// }
 
 // file && file.addEventListener("change",()=>{
   //   let profileImg = document.getElementById("profile-img")
@@ -82,13 +105,13 @@ let uploadToStorage = (file)=>{
   // })
   
   
-  let uploadfile = async (file)=>{
-    let file = document.getElementById("file")
-  const url = await uploadToStorage(file)
-  console.log("URl-------------->",url)
-}
+//   let uploadfile = async (file)=>{
+//     let file = document.getElementById("file")
+//   const url = await uploadToStorage(file)
+//   console.log("URl-------------->",url)
+// }
 
-uploadProfileBtn && uploadProfileBtn.addEventListener("click",uploadfile);
+// uploadProfileBtn && uploadProfileBtn.addEventListener("click",uploadfile);
 
 
 
