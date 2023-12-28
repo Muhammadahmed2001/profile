@@ -6,20 +6,20 @@ let password = document.getElementById("password");
 let registerBtn = document.getElementById("register-btn");
 
 
-let registertion = () => {
+let registertion = async () => {
 
-  console.log()
   if(userName.value.trim() !== "" ){
+    console.log(userName.value)
 
     createUserWithEmailAndPassword(auth, email.value, password.value)
-    .then((userCredential) => {
+    .then((userCredential) =>  {
+      const user = userCredential.user;
+       setDoc(doc(db, "user name", user.uid), {
+        name: userName.value,
+      });
     // profileUserName.innerHTML = userName.value
     // Signed up
     
-    const user = userCredential.user;
-    setDoc(doc(db, "User Name", user.uid), {
-      name: userName.value,
-    });
     
     
     // ...
