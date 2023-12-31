@@ -31,8 +31,8 @@ const storage = getStorage(app);
 let email = document.getElementById("email");
 let password = document.getElementById("password");
 let logInBtn = document.getElementById("login");
-let loader = document.getElementById("loader");
-let main = document.getElementById("main");
+// let loader = document.getElementById("loader");
+// let main = document.getElementById("main");
 
 logInBtn &&
   logInBtn.addEventListener("click", () => {

@@ -14,7 +14,7 @@ let registertion = async () => {
     createUserWithEmailAndPassword(auth, email.value, password.value)
     .then((userCredential) =>  {
       const user = userCredential.user;
-       setDoc(doc(db, "user name", user.uid), {
+       setDoc(doc(db, "userName", user.uid), {
         name: userName.value,
       });
     // profileUserName.innerHTML = userName.value
