@@ -15,8 +15,8 @@ import {
 let updateName = document.getElementById("updateName");
 let updateEmail = document.getElementById("updateEmail");
 let logOutBtn = document.getElementById("logout");
-let loader = document.getElementById("loader");
-let main = document.getElementById("main");
+let loader = document.getElementById("loader")
+let main = document.getElementById("main")
 let uploadProfileBtn = document.getElementById("picture-update-btn");
 let profile = document.getElementById("profile-img");
 
@@ -59,27 +59,34 @@ onAuthStateChanged(auth, async (user) => {
     //   // User is signed out
     //   // ...
 
+
     const docRef = doc(db, "userName", user.uid);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      if (location.pathname !== "/profile.html") {
-        location = "./profile.html";
-      }
-      if(main){
-        main.style.display = "flex";
-        loader.style.display = "none";
-        console.log("Document data:", docSnap.data());
-        updateName.innerHTML = docSnap.data().name;
-        updateEmail.innerHTML = user.email;
-        if (docSnap.data().profileImg !== "") {
-          const docRef = doc(db, "ProfileImg", userId);
-          const docSnap = await getDoc(docRef);
-          profile.src = docSnap.data().profileImg;
-          // console.log("Document data:", docSnap.id);
-        }
-      }
-      }
+      // if (location.pathname !== "/profile.html") {
+      //   location = "./profile.html";
+      // }
+      // console.log("Document data:", docSnap.data());
+      loader.style.display = "none";
+      main.style.display = "flex";
+      updateName.innerHTML = docSnap.data().name;
+      updateEmail.innerHTML = user.email;
+      // console.log("chal raha hai")
+      // if (docSnap.exists()){
+      // const docRef = doc(db, "ProfileImg", userId);
+      // const docSnap = await getDoc(docRef);
+      //   profile.src = docSnap.data().profileImg;
+      //   // console.log("Document data:", docSnap.id);
+      // }
+    }
+
+    const refrence = doc(db, "ProfileImg", userId);
+    const Snap = await getDoc(refrence);
+    if (Snap.exists()) {
+      profile.src = Snap.data().profileImg;
+      // console.log("Document data:", docSnap.id);
+    }
   } else {
     // docSnap.data() will be undefined in this case
     if (
@@ -88,7 +95,7 @@ onAuthStateChanged(auth, async (user) => {
     ) {
       location = "index.html";
     }
-    console.log("No such document!");
+
   }
 });
 
@@ -133,11 +140,18 @@ let uploadFile = async () => {
     profileImg: url,
   });
 
+  const docRef = doc(db, "ProfileImg", userId);
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    profile.src = docSnap.data().profileImg;
+    // console.log("Document data:", docSnap.id);
+  }
   // const docRef = doc(db, "Profile Img", userId);
   // const docSnap = await getDoc(docRef);
   // console.log(docSnap.data())
 };
 const file = document.getElementById("file");
+
 
 file &&
   file.addEventListener("change", () => {
