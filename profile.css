@@ -13,6 +13,7 @@
   justify-content: center;
   align-items: center;
   display: none;
+  word-wrap: break-word;
 }
 
 .card {
@@ -22,15 +23,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 500px;
+  width: 70%;
 }
 
 .card .text {
+  width: 100%;
   color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
+  /* position: relative; */
 }
 
 .card .text img {
@@ -43,11 +45,14 @@
 input[type="file"] {
   display: none;
 }
+.camera-icon {
+  position: relative;
+}
 .profile-icon {
   position: absolute;
   bottom: 30%;
-  right: 30%;
- 
+  /* left: 2%; */
+  /* right: 30%; */
 }
 
 .card h1 {
@@ -55,18 +60,23 @@ input[type="file"] {
   font-size: 50px;
   font-weight: 500;
 }
+.profile-name-div {
+  width: 95%;
+}
 
-.card .text h3 {
+.profile-name {
+  width: 100%;
   font-size: 200%;
   font-weight: 400;
   text-align: center;
+  word-wrap: break-word;
 }
 
-.card .text p:nth-of-type(1) {
+.profile-email:nth-of-type(1) {
+  text-align: center;
   color: rgb(35, 182, 219);
   font-size: 15px;
   margin-top: -5px;
-  
 }
 
 .card .text p:nth-of-type(2) {
@@ -173,7 +183,7 @@ body {
     to right,
     rgb(230, 30, 77) 0%,
     rgb(227, 28, 95) 50%,
-    rgb(215, 4, 102) 100%
+    rgba(222, 224, 76, 0.603) 100%
   );
   color: #fff;
   margin-top: 10px;
@@ -199,8 +209,3 @@ body {
   color: #fff;
   margin-top: 10px;
 }
-
-
-
-
-

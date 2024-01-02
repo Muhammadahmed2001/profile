@@ -62,31 +62,39 @@ onAuthStateChanged(auth, async (user) => {
 
     const docRef = doc(db, "userName", user.uid);
     const docSnap = await getDoc(docRef);
-
+    
     if (docSnap.exists()) {
-      // if (location.pathname !== "/profile.html") {
-      //   location = "./profile.html";
-      // }
+      if (location.pathname !== "/profile.html") {
+        location = "./profile.html";
+      }
       // console.log("Document data:", docSnap.data());
-      loader.style.display = "none";
-      main.style.display = "flex";
-      updateName.innerHTML = docSnap.data().name;
-      updateEmail.innerHTML = user.email;
-      // console.log("chal raha hai")
-      // if (docSnap.exists()){
+     if(location.pathname == "/profile.html"){
+
+       
+       loader.style.display = "none";
+       main.style.display = "flex";
+       updateName.innerHTML = docSnap.data().name;
+       updateEmail.innerHTML = user.email;
+       
+       // console.log("chal raha hai")
+       // if (docSnap.exists()){
       // const docRef = doc(db, "ProfileImg", userId);
       // const docSnap = await getDoc(docRef);
       //   profile.src = docSnap.data().profileImg;
       //   // console.log("Document data:", docSnap.id);
       // }
-    }
+    
 
+    }
+    }
+    
     const refrence = doc(db, "ProfileImg", userId);
     const Snap = await getDoc(refrence);
     if (Snap.exists()) {
       profile.src = Snap.data().profileImg;
       // console.log("Document data:", docSnap.id);
     }
+  
   } else {
     // docSnap.data() will be undefined in this case
     if (
